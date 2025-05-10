@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alerta de Preço</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-danger">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" href="#">Odinline</a>
+            <span class="text-white">
+                <span id="username">Usuário</span>
+            </span>
+        </div>
+    </nav>
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Alerta de Preço</h2>
+      <div>
+        <a href="menu.html" class="btn btn-secondary me-2">Voltar ao Menu</a>
+        <button class="btn btn-danger" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <h5 class="mb-3">Seus Produtos Cadastrados</h5>
+    <ul class="list-group mb-4" id="lista-produtos">
+      
+    </ul>
+
+    <h5 class="mb-3">Cadastrar Novo Alerta</h5>
+    <form id="form-alerta" class="card p-3 shadow-sm">
+      <div class="mb-3">
+        <label for="produto-id" class="form-label">ID do Produto</label>
+        <input type="number" id="produto-id" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="valor-desejado" class="form-label">Valor Desejado (R$)</label>
+        <input type="number" id="valor-desejado" class="form-control" step="0.01" required>
+      </div>
+      <div class="mb-3">
+        <label for="acao" class="form-label">Ação</label>
+        <select id="acao" class="form-select" required>
+          <option value="notificar">Notificar</option>
+          <option value="comprar">Comprar</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Cadastrar Alerta</button>
+    </form>
+  </div>
+
+  <script src="alerta.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const usuario= JSON.parse(localStorage.getItem('usuarioLogado'));
+        if (usuario && usuario.nome) {
+            document.getElementById('username').textContent = usuario.nome;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('usuarioLogado');
+        window.location.href= 'index.html';
+    }
+
+</script>
+</body>
+</html>

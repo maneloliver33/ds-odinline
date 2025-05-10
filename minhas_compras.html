@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minhas Compras | Odinline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-danger">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" href="#">Odinline</a>
+            <span class="text-white">
+                <span id="username">Usuário</span>
+            </span>
+        </div>
+    </nav>
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Minhas Compras</h2>
+      <div>
+        <a href="menu.html" class="btn btn-secondary me-2">Voltar ao Menu</a>
+        <button class="btn btn-danger" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-white">
+        <h5 class="mb-0">Compras Realizadas</h5>
+      </div>
+      <div class="card-body">
+        <div id="sem-compras" class="text-center py-4 text-muted">
+          <p>Você ainda não realizou nenhuma compra através dos alertas de preço.</p>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover" id="tabela-compras">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Valor (R$)</th>
+                <th>Data da Compra</th>
+              </tr>
+            </thead>
+            <tbody id="lista-compras">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const usuario= JSON.parse(localStorage.getItem('usuarioLogado'));
+        if (usuario && usuario.nome) {
+            document.getElementById('username').textContent= usuario.nome;
+        }
+    });
+    
+    function logout() {
+        localStorage.removeItem('usuarioLogado');
+        window.location.href= 'index.html';
+    }
+    </script>
+  <script src="minhas-compras.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

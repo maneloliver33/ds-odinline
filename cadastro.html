@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro | Odinline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .cadastro-container {
+      max-width: 500px;
+      margin-top: 80px;
+      padding: 30px;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .form-title {
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cadastro-container mx-auto">
+      <h2 class="text-center form-title">Criar Conta</h2>
+      <form id="form-cadastro">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome de Usuário</label>
+          <input type="text" class="form-control" id="nome" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="senha" required>
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Cadastrar</button>
+      </form>
+      <div class="text-center mt-3">
+        <small>Já tem uma conta? <a href="login.html">Faça login</a></small>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("form-cadastro").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const nome= document.getElementById("nome").value;
+      const email= document.getElementById("email").value;
+      const senha= document.getElementById("senha").value;
+
+      localStorage.setItem("usuario", JSON.stringify({ nome, email, senha }));
+
+      alert("Cadastro realizado com sucesso!");
+      window.location.href= "index.html";
+    });
+  </script>
+
+  <script src="cadastro.js"></script>
+
+</body>
+</html>
